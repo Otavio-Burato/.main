@@ -1,0 +1,130 @@
+{
+  "layer": "bottom",
+    "position": "top",
+
+    "modules-left": [
+      "sway/workspaces",
+    "sway/mode",
+    ],
+
+    "modules-center": [
+      "sway/window",
+    ],
+
+    "modules-right": [
+      "battery",
+    "network",
+    "pulseaudio",
+    "tray",
+    "clock#time",
+    "custom/power",
+    ],
+
+    "custom/power":{
+      "format":"   ",
+      "on-click": "swaynag -t warning -m 'Power Options' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'swaymsg exec systemctl suspend' -b 'shutdown' 'shutdown now'",
+      "tooltip": false,
+    },
+
+    "battery": {
+      "interval": 10,
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "  {icon}  {capacity}%", // Icon: bolt
+      "format-discharging": "{icon}  {capacity}%",
+      "format-icons": [
+        "",
+      "",
+      "",
+      "",
+      "",
+      ],
+      "tooltip": true
+    },
+
+    "clock#time": {
+      "interval": 1,
+      "format": "{:%H:%M:%S}",
+      "tooltip-format": "{:%e %B %Y}\n<tt><small>{calendar}</small></tt>",
+      "tooltip": true,
+    },
+
+    "cpu": {
+      "interval": 5,
+      "format": "",
+      "states": {
+        "warning": 70,
+        "critical": 90
+      }
+    },
+
+    "memory": {
+      "interval": 5,
+      "format": "",
+      "states": {
+        "warning": 70,
+        "critical": 90
+      }
+    },
+
+    "network": {
+      "interval": 5,
+      "format-wifi":"",
+      "format-ethernet": "🖧 ", //
+      "format-disconnected": "⚠",
+      "tooltip-format": "{essid}",
+    },
+    //"default": ["", "", ""],
+
+    "pulseaudio": {
+      "scroll-step": 2,
+      "format": "{icon}",
+      "format-muted": "Muted ",
+      "format-icons": {
+        "headphones": "",
+        "phone": "", // Icon: phone  ⬢
+        "portable": "",
+        "car": "",
+        "default": ["▱▱▱▱▱", "▰▱▱▱▱", "▰▰▱▱▱","▰▰▰▱▱","▰▰▰▰▱","▰▰▰▰▰"],
+      },
+      "tooltip": false,
+      "on-click": "amixer set Master toggle",
+    },
+
+    "sway/mode": {
+      "format": "<span style=\"italic\">  {}</span>",
+      "tooltip": false,
+    },
+
+    "sway/window": {
+      "format": "{}",
+      "max-length": 120,
+      "tooltip": false,
+    },
+
+    "sway/workspaces": {
+      "all-outputs": false,
+      "disable-scroll": false,
+      "format": "{icon} {name}",
+      "format-icons": {
+        "1:WWW": "龜",
+        "2:Mail": "",
+        "3:Editor": "",
+        "4:Terminals": "",
+        "8:Documents": "",
+        "9:Multimedia": "",
+        "10:Torrent": "",
+        "urgent": "",
+        "focused": "",
+        "default": ""
+      }
+    },
+
+    "tray": {
+      "icon-size": 10,
+      "spacing": 10
+    }
+
+}
