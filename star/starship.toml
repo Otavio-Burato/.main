@@ -1,0 +1,10 @@
+add_newline = false
+
+[package]
+disabled = true
+
+[git_branch]
+format = "[$branch](blue)"
+
+[rust]
+format = "[🦀$version](red bold)"

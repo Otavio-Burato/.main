@@ -9,6 +9,7 @@
 
     "modules-center": [
       "sway/window",
+      "custom/test",
     ],
 
     "modules-right": [
@@ -19,6 +20,12 @@
     "clock#time",
     "custom/power",
     ],
+
+    "custom/test":{
+      "format": "{test}",
+      "exec": "~/test",
+      "interval": 10,
+    },
 
     "custom/power":{
       "format":"   ",
@@ -47,7 +54,7 @@
     "clock#time": {
       "interval": 1,
       "format": "{:%H:%M:%S}",
-      "tooltip-format": "{:%e %B %Y}\n<tt><small>{calendar}</small></tt>",
+      "tooltip-format": "{:%e %B %Y}\n<tt>{calendar}</tt>",
       "tooltip": true,
     },
 
@@ -72,22 +79,30 @@
     "network": {
       "interval": 5,
       "format-wifi":"",
-      "format-ethernet": "🖧 ", //
-      "format-disconnected": "⚠",
+      "format-ethernet": "🖧",
+      "format-disconnected": " ",
       "tooltip-format": "{essid}",
     },
-    //"default": ["", "", ""],
+
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
 
     "pulseaudio": {
-      "scroll-step": 2,
+      "scroll-step": 3,
       "format": "{icon}",
       "format-muted": "Muted ",
       "format-icons": {
         "headphones": "",
-        "phone": "", // Icon: phone  ⬢
+        "phone": "", // Icon: phone  ⬢      ☁︎ ✕ ● ࿊ • ༄
         "portable": "",
         "car": "",
-        "default": ["▱▱▱▱▱", "▰▱▱▱▱", "▰▰▱▱▱","▰▰▰▱▱","▰▰▰▰▱","▰▰▰▰▰"],
+        "default": ["▱▱▱", "▰▱▱", "▰▰▱","▰▰▰"],
       },
       "tooltip": false,
       "on-click": "amixer set Master toggle",
@@ -105,20 +120,14 @@
     },
 
     "sway/workspaces": {
-      "all-outputs": false,
       "disable-scroll": false,
+      "all-outputs": true,
       "format": "{icon} {name}",
       "format-icons": {
-        "1:WWW": "龜",
-        "2:Mail": "",
-        "3:Editor": "",
-        "4:Terminals": "",
-        "8:Documents": "",
-        "9:Multimedia": "",
-        "10:Torrent": "",
+        "1:WWW": "",
         "urgent": "",
         "focused": "",
-        "default": ""
+        "default": "",
       }
     },
 

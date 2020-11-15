@@ -31,7 +31,7 @@
 
 /* The whole bar */
 #waybar {
-    background-color: #323232;
+    background-color: #000000;
     color: white;
     font-family: Cantarell, Noto Sans, sans-serif;
     font-size: 12px;

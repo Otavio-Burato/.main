@@ -1,0 +1,36 @@
+export ZSH="/home/burato/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+HIST_STAMPS="dd/mm/yyyy"
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+MANPATH="/usr/local/man:$MANPATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+
+mkdir -p ~/screenshots
+
+if which sk > /dev/null 2>&1; then
+    alias sk="sk --ansi -i -c 'rg --color=always --line-number "{}"' --preview '$HOME/.main/scrips/preview.sh {}'"
+fi
+
+if which ls > /dev/null 2>&1; then
+    alias ls="exa"
+fi
+
+if which cat > /dev/null 2>&1; then
+    alias cat="bat"
+fi
+
+if which hyperfine > /dev/null 2>&1; then
+    alias time="hyperfine"
+fi
+
+if which btm > /dev/null 2>&1; then
+    alias htop="btm"
+fi
+
+eval "$(starship init zsh)"
+
