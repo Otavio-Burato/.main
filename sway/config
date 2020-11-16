@@ -8,7 +8,7 @@ set $term alacritty
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Imagens/desktop.jpg fill
+#output * bg ~/Imagens/desktop.jpg fill
 
 input * {
     xkb_layout br
@@ -113,7 +113,7 @@ bindsym $mod+minus scratchpad show
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 8
     position top
-    status_command /usr/bin/i3status-rs ~/config.toml
+    status_command /usr/bin/i3status-rs ~/.config/sway/config.toml
     colors {
         separator #666666
         background #222222

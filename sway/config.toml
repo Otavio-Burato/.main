@@ -1,0 +1,35 @@
+[theme]
+name = "bad-wolf"
+[theme.overrides]
+separator = ""
+
+[icons]
+name = "awesome"
+[icons.overrides]
+backlight_empty = "🌑"
+backlight_partial1 = "🌘"
+backlight_partial2 = "🌗"
+backlight_partial3 = "🌖"
+backlight_full = "🌕"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+
+[[block]]
+block = "net"
+device = "wlp0s29f7u8"
+ssid = true
+speed_up = false
+speed_down = false
+
