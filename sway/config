@@ -1,6 +1,4 @@
 set $mod Mod4
-
-# Home row direction keys, like vim
 set $left k
 set $right l
 
@@ -8,17 +6,26 @@ set $term alacritty
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg ~/Imagens/desktop.jpg fill
+output * bg ~/Imagens/desktop.jpg fill
 
 input * {
     xkb_layout br
 }
 
+exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000'
+
 ### Key bindings
-# Basics:
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Power Menu' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'systemctl suspend' -b 'Shutdown' 'systemctl shutdown'
 
 # Print
-bindsym Print exec slurp | grim -g - ~/screenshots/$(date +"scren_%Y-%m-%d_%H-%M").png
+bindsym Print mode "test" & exec slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +"scren_%Y-%m-%d_%H-%M").png & mode "default"
+
+seat * hide_cursor 5000
+exec mako
 
 # Start a terminal
 bindsym $mod+Return exec $term
@@ -84,31 +91,16 @@ bindsym $mod+space focus mode_toggle
 #Alt+tab
 bindsym --release Alt+tab workspace back_and_forth
 
-# Scratchpad:
-# Sway has a "scratchpad", which is a bag of holding for windows.
-# You can send windows there and get them back later.
-
-# Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-#mode "resize" {
-#  bindsym $left resize shrink width 10px
-#    bindsyr $right resize grow width 10px
-#    bindsym Left resize shrink width 10px
-#    bindsym Right resize grow width 10px
-#    bindsym Return mode "default"
-#    bindsym Escape mode "default"
-#}
-#bindsym $mod+r mode "resize"
 
-# Status Bar:
-# Read `man 5 sway-bar` for more information about this section.
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 8

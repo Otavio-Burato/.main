@@ -105,7 +105,6 @@ nnoremap <S-t> :bp<CR>
 nnoremap q :bd<CR>
 nnoremap <S-q> :q<CR>
 nnoremap <C-s> :SK<cr>
-noremap h :set relativenumber!<CR>
 inoremap <expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
