@@ -18,6 +18,13 @@ display_type = "memory"
 format_mem = "{Mup}%"
 format_swap = "{SUp}%"
 
+#[[block]]
+#block = "net"
+#device = "enp0s29f7u3"
+#ssid = true
+#speed_up = false
+#speed_down = false
+
 [[block]]
 block = "sound"
 
@@ -25,11 +32,4 @@ block = "sound"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
-
-[[block]]
-block = "net"
-device = "wlp0s29f7u8"
-ssid = true
-speed_up = false
-speed_down = false
 

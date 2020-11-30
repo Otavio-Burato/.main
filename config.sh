@@ -30,6 +30,8 @@ check_comand slurp
 check_comand mako
 check_comand swaylock
 check_comand swayidle
+check_comand hexyl
+check_comand tab
 
 if $check; then
     echo "Create Dir"

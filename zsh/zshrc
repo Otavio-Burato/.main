@@ -36,3 +36,7 @@ alias_comands htop btm
 alias_comands find fd
 alias_comands du dust
 
+# tab multiplexer configuration: https://github.com/austinjones/tab-rs/
+source "/home/burato/.local/share/tab/completion/zsh-history.zsh"
+# end tab configuration
+

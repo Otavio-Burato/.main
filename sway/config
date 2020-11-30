@@ -13,20 +13,17 @@ input * {
 }
 
 exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * dpms off"' \
+          timeout 3000 'swaylock -f -c 000000' \
+          timeout 3000 'swaymsg "output * dpms off"' \
           resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
 
 ### Key bindings
 
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Power Menu' \
-    -b 'Logout' 'swaymsg exit'\
-    -b 'Suspend' 'systemctl suspend'\
-    -b 'Shutdown' 'systemctl shutdown'
-
 # Print
-bindsym Print exec slurp | grim -g -\
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+bindsym Shift+Print exec slurp | grim -g -\
     $(xdg-user-dir PICTURES)/Screenshots/$(date +"scren_%Y-%m-%d_%H-%M").png
 
 seat * hide_cursor 5000
@@ -97,6 +94,11 @@ bindsym $mod+space focus mode_toggle
 bindsym --release Alt+tab workspace back_and_forth
 
 bindsym $mod+minus scratchpad show
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Power Menu' \
+    -b 'Logout' 'swaymsg exit'\
+    -b 'Suspend' 'systemctl suspend'\
+    -b 'Shutdown' 'shutdown now'
 
 mode "resize" {
     bindsym Left resize shrink width 10px

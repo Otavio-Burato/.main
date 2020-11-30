@@ -70,20 +70,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 command! -nargs=0 Format  :call CocAction('format')
 command! -nargs=? Fold    :call CocAction('fold', <f-args>)
 command! -nargs=0 OR      :call CocAction('runCommand', 'editor.action.organizeImport')
-nnoremap K <C-e>
-nnoremap L <C-y>
-vnoremap Ç $
-nnoremap Ç A
-vnoremap J 0
-nnoremap J I
-nnoremap ç l
-nnoremap l k
-nnoremap k j
-nnoremap j h
-vnoremap ç l
-vnoremap l k
-vnoremap k j
-vnoremap j h
+nnoremap J <C-e>
+nnoremap K <C-y>
+vnoremap L $
+nnoremap H A
 map <F2> :CocCommand explorer<CR>
 map <F3> :set hlsearch!<CR>
 map <F4> :set spell!<CR>

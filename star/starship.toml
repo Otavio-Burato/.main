@@ -1,4 +1,5 @@
 add_newline = false
+format = "${custom.tab}$all"
 
 [package]
 disabled = true
