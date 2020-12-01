@@ -32,21 +32,26 @@ check_comand swaylock
 check_comand swayidle
 check_comand hexyl
 check_comand tab
+check_comand codium
 
 if $check; then
-    echo "Create Dir"
     mkdir -p $HOME/.config/alacritty
     mkdir -p $HOME/.config/sway
     mkdir -p $HOME/.config/gtk-3.0
     mkdir -p $HOME/.config/nvim
-    echo ''
-    echo "Start linkin"
-    ln $HOME/.main/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
-    ln $HOME/.main/zsh/zshrc $HOME/.zshrc
-    ln $HOME/.main/sway/config $HOME/.config/sway/config
-    ln $HOME/.main/sway/config.toml $HOME/.config/sway/config.toml
-    ln $HOME/.main/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/settings.ini
-    ln $HOME/.main/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
-    ln $HOME/.main/nvim/init.vim $HOME/.config/nvim/init.vim
-    ln $HOME/.main/star/starship.toml $HOME/.config/starship.toml
+    ln $HOME/.main/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml 2> /dev/null
+    ln $HOME/.main/zsh/zshrc $HOME/.zshrc 2> /dev/null
+    ln $HOME/.main/sway/config $HOME/.config/sway/config 2> /dev/null
+    ln $HOME/.main/sway/config.toml $HOME/.config/sway/config.toml 2> /dev/null
+    ln $HOME/.main/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/settings.ini 2> /dev/null
+    ln $HOME/.main/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json 2> /dev/null
+    ln $HOME/.main/nvim/init.vim $HOME/.config/nvim/init.vim 2> /dev/null
+    ln $HOME/.main/star/starship.toml $HOME/.config/starship.toml 2> /dev/null
+    echo 'OK!'
 fi
+
+FILE=$(xdg-user-dir PICTURES)/desktop.jpg
+if [ ! -f "$FILE" ]; then
+    curl https://images4.alphacoders.com/966/thumb-1920-966314.jpg --output $FILE
+fi
+
