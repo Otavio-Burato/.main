@@ -33,6 +33,7 @@ check_comand swayidle
 check_comand hexyl
 check_comand tab
 check_comand codium
+check_comand wofi
 
 if $check; then
     mkdir -p $HOME/.config/alacritty

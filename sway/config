@@ -3,7 +3,8 @@ set $left k
 set $right l
 
 set $term alacritty
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi -i -I -b -k $HOME/.main/wofi/cache --show drun
 
 #Wallpaper
 output * bg $(xdg-user-dir PICTURES)/desktop.jpg fill
@@ -18,7 +19,17 @@ exec swayidle -w \
           resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -c 000000'
 
+default_floating_border none
+hide_edge_borders both
+gaps outer 0
+
 ### Key bindings
+
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5% ; zsh -c wob_volume > $SWAYSOCK.wob"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%; zsh -c wob_volume > $SWAYSOCK.wob"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym XF86MonBrightnessUp exec "exec zsh -c brightness_up"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 10%-"
 
 # Print
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
@@ -33,7 +44,7 @@ exec mako
 bindsym $mod+Return exec $term
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Start your launcher
 bindsym $mod+d exec $menu
@@ -127,3 +138,4 @@ bar {
 default_border none
 
 include /etc/sway/config.d/*
+
